@@ -8,16 +8,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Hint: You can use the image name to get the image from the images folder.
 const MenuItem = ({ title, description, price, image }) => {
     return (
-        <div class="row fooditem">
-            <div class="col-4">
-                <img src={`/images/${image}`} alt={title} class="menuimg" />
+        <div className="row fooditem">
+            <div className="col-4">
+                <img src={`${process.env.PUBLIC_URL}/images/${image}`} alt={title} className="menuimg" />
             </div>
-        <div class="col-8">
-            <p class="menutitle">{title}</p>
-            <p class="menudescription">{description}</p>
-        <div class="lastrow">
-            <p class="price">{`$${price}`}</p>
-            <button type="button" class="btn btn-light addbutton">Add</button>
+        <div className="col-8">
+            <p className="menutitle">{title}</p>
+            <p className="menudescription">{description}</p>
+        <div className="lastrow">
+            <p className="price">{`$${price}`}</p>
+            <button type="button" className="btn btn-light addbutton">Add</button>
         </div>
       </div>
     </div>

@@ -88,7 +88,7 @@ function App() {
         {/* Display menu items dynamicaly here by iterating over the provided menuItems */}
         <Header/>
         {menuItems.map((item) => (
-           <MenuItem title={item.title} description={item.description} price={item.price} image={item.imageName} /> 
+           <MenuItem key={item.id} title={item.title} description={item.description} price={item.price} image={item.imageName} /> 
         ))};
       </div>
     </div>
