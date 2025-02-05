@@ -10,7 +10,7 @@ const MenuItem = ({ title, description, price, image }) => {
     return (
         <div class="row fooditem">
             <div class="col-4">
-                <img src={`../../images/${image}`} alt={title} class="menuimg" />
+                <img src={`japanese-menu/public/images/${image}`} alt={title} class="menuimg" />
             </div>
         <div class="col-8">
             <p class="menutitle">{title}</p>
