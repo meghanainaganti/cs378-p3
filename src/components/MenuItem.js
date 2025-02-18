@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -6,7 +6,30 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // Modify the component to take in all the other properties of a menu item you need and display them in the component.
 // Use bootstrap to style the elements so that it looks like the mockup in the assignment.
 // Hint: You can use the image name to get the image from the images folder.
-const MenuItem = ({ title, description, price, image }) => {
+const MenuItem = ({ id, title, description, price, image, updateSubtotal, updateItemCounts, clearAll }) => {
+
+   const [count, setCount] = useState(0)
+
+   const incrementCount = () => {
+    setCount(count + 1);
+    updateSubtotal(price);
+    updateItemCounts(id, 1);
+   }
+    
+   const decrementCount = () => {
+    if(count > 0){
+        setCount(count - 1);
+    } else {
+        setCount(0);
+    }
+    updateSubtotal(-price);
+    updateItemCounts(id, -1);
+   }
+
+   useEffect(() => {
+    setCount(0);
+   }, [clearAll]);
+
     return (
         <div className="row fooditem">
             <div className="col-4">
@@ -17,7 +40,11 @@ const MenuItem = ({ title, description, price, image }) => {
             <p className="menudescription">{description}</p>
         <div className="lastrow">
             <p className="price">{`$${price}`}</p>
-            <button type="button" className="btn btn-light addbutton">Add</button>
+            <span className="counter-container">
+                <button className="edititembutton" onClick={incrementCount}>+</button>
+                <span> {count} </span>
+                <button className="edititembutton" onClick={decrementCount}>-</button>
+            </span>
         </div>
       </div>
     </div>
